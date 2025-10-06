@@ -1,0 +1,24 @@
+{
+	"required": true,
+	"package": "net.moddedmite.bettergarassandleaves.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"target": "CLIENT",
+	"mixins": [
+		"BlockGrassMixin",
+		"BlockLeavesBaseMixin",
+		"EntityMixin",
+		"EntityPlayerMixin",
+		"MinecraftMixin",
+		"NetClientHandlerMixin",
+		"RenderBlocksMixin",
+		"TextureMapMixin",
+		"WorldClientMixin",
+		"WorldMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": false
+	}
+}
