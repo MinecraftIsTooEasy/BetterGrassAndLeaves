@@ -1,5 +1,6 @@
 package net.moddedmite.bettergarassandleaves.mixin;
 
+import net.minecraft.ResourceLocation;
 import net.minecraft.TextureAtlasSprite;
 import net.minecraft.TextureMap;
 import net.moddedmite.bettergarassandleaves.interfaces.ITextureMap;
@@ -15,7 +16,7 @@ import poersch.minecraft.bettergrassandleaves.renderer.BetterBlockRendererList;
 
 import java.util.Map;
 
-@Mixin(TextureMap.class)
+@Mixin(value = TextureMap.class, priority = 3000)
 public abstract class TextureMapMixin implements ITextureMap {
     @Shadow @Final private Map mapRegisteredSprites;
     @Shadow public abstract int getTextureType();
@@ -29,7 +30,7 @@ public abstract class TextureMapMixin implements ITextureMap {
         return false;
     }
 
-    @Inject(method = "loadTextureAtlas", at = @At(value = "FIELD", target = "Lnet/minecraft/TextureMap;listAnimatedSprites:Ljava/util/List;", shift = At.Shift.AFTER))
+    @Inject(method = "loadTextureAtlas", at = @At("TAIL"))
     private void onRegisterIconsHook(CallbackInfo ci) {
         if (BetterGrassAndLeavesMod.useRegisterIconsHook.value && this.getTextureType() == 0) {
             BetterGrassAndLeavesMod.workingRegisterIconsHook = true;

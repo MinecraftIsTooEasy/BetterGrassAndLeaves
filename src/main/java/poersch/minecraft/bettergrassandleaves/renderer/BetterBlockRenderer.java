@@ -132,7 +132,7 @@ public abstract class BetterBlockRenderer {
     }
 
     public static Icon[] registerBlockIconsCallback(String targetName, String sourceName, ITextureLoadingCallback callback) {
-        return ResourceHelper.registerIconsCallback(currentIconRegister, targetName, BetterGrassAndLeavesMod.resourceID + "textures/blocks/", sourceName, callback);
+        return ResourceHelper.registerIconsCallback(currentIconRegister, targetName, "textures/blocks/", sourceName, callback);
     }
 
     public void onRegisterIcons(IconRegister iconRegister) {

@@ -80,8 +80,12 @@ public class BetterSeaweedRenderer extends BetterBlockRenderer implements ITextu
         return false;
     }
 
+//    protected boolean nearShore(IBlockAccess iBlockAccess, int x, int y, int z) {
+//        return iBlockAccess.getBlockMaterial(x - 2, y, z) != Material.water || iBlockAccess.getBlockMaterial(x + 2, y, z) != Material.water || iBlockAccess.getBlockMaterial(x, y, z - 2) != Material.water || iBlockAccess.getBlockMaterial(x, y, z + 2) != Material.water;
+//    }
+
     protected boolean nearShore(IBlockAccess iBlockAccess, int x, int y, int z) {
-        return iBlockAccess.getBlockMaterial(x - 2, y, z) != Material.water || iBlockAccess.getBlockMaterial(x + 2, y, z) != Material.water || iBlockAccess.getBlockMaterial(x, y, z - 2) != Material.water || iBlockAccess.getBlockMaterial(x, y, z + 2) != Material.water;
+        return (iBlockAccess.getBlockMaterial(x - 2, y, z) == Material.water && iBlockAccess.getBlockMaterial(x + 2, y, z) == Material.water && iBlockAccess.getBlockMaterial(x, y, z - 2) == Material.water && iBlockAccess.getBlockMaterial(x, y, z + 2) == Material.water) ? false : true;
     }
 
     @Override

@@ -1,13 +1,6 @@
 package poersch.minecraft.util;
 
-import net.minecraft.Minecraft;
-import net.minecraft.Resource;
-import net.minecraft.ResourceLocation;
-import net.minecraft.ResourceManager;
-import net.minecraft.ResourcePackRepository;
-import net.minecraft.IconRegister;
-import net.minecraft.TextureAtlasSprite;
-import net.minecraft.Icon;
+import net.minecraft.*;
 import net.moddedmite.bettergarassandleaves.interfaces.ITextureMap;
 import poersch.minecraft.bettergrassandleaves.BetterGrassAndLeavesMod;
 import poersch.minecraft.util.texture.ITextureLoadingCallback;
@@ -90,8 +83,9 @@ public class ResourceHelper {
 
     private static Icon registerIconCallbackInternal(IconRegister iconRegister, String name, String sourcePath, String sourceName, ITextureLoadingCallback callback) {
         ResourceLocation location = new ResourceLocation(BetterGrassAndLeavesMod.resourceDomain, sourcePath + sourceName + ".png");
-        TextureAtlasSprite textureAtlasSprite = new TextureAtlasSpriteLoadingCallback(name, location, callback);
-        if (((ITextureMap) iconRegister).setTextureEntry(name, textureAtlasSprite)) {
+        BetterGrassAndLeavesMod.logger.warning("RL:" + location);
+        TextureAtlasSprite textureAtlasSprite = new TextureAtlasSpriteLoadingCallback(sourceName, location, callback);
+        if (((ITextureMap) iconRegister).setTextureEntry(sourceName, textureAtlasSprite)) {
             return textureAtlasSprite;
         }
         return null;
@@ -121,4 +115,6 @@ public class ResourceHelper {
         }
         return icon;
     }
+
+
 }
