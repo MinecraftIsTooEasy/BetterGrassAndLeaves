@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class EntityPlayerMixin {
     @Inject(method = "attackTargetEntityWithCurrentItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/Entity;canAttackWithItem()Z"))
     private void addBlood(Entity target, CallbackInfo ci) {
-        if (target instanceof EntityLivingBase) {
+        if (target instanceof EntityLivingBase && !target.worldObj.isRemote) {
             target.entityFX(EnumExtra.bloodFX);
         }
     }

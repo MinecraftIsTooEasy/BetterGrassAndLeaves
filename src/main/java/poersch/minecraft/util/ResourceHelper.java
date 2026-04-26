@@ -83,9 +83,8 @@ public class ResourceHelper {
 
     private static Icon registerIconCallbackInternal(IconRegister iconRegister, String name, String sourcePath, String sourceName, ITextureLoadingCallback callback) {
         ResourceLocation location = new ResourceLocation(BetterGrassAndLeavesMod.resourceDomain, sourcePath + sourceName + ".png");
-        BetterGrassAndLeavesMod.logger.warning("RL:" + location);
-        TextureAtlasSprite textureAtlasSprite = new TextureAtlasSpriteLoadingCallback(sourceName, location, callback);
-        if (((ITextureMap) iconRegister).setTextureEntry(sourceName, textureAtlasSprite)) {
+        TextureAtlasSprite textureAtlasSprite = new TextureAtlasSpriteLoadingCallback(name, location, callback);
+        if (((ITextureMap) iconRegister).setTextureEntry(name, textureAtlasSprite)) {
             return textureAtlasSprite;
         }
         return null;

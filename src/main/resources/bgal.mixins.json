@@ -6,11 +6,13 @@
 	"mixins": [
 		"BlockGrassMixin",
 		"BlockLeavesBaseMixin",
+		"EntityLivingBaseMixin",
 		"EntityMixin",
 		"EntityPlayerMixin",
 		"MinecraftMixin",
 		"NetClientHandlerMixin",
 		"RenderBlocksMixin",
+		"TextureAtlasSpriteMixin",
 		"TextureMapMixin",
 		"WorldClientMixin",
 		"WorldMixin"
